@@ -1,50 +1,23 @@
 {
-  "name": "react-hooks-overview",
-  "version": "0.1.0",
+  "name": "react-example-app",
+  "version": "1.0.0",
   "private": true,
-  "dependencies": {
-    "react": "^16.13.1",
-    "react-dom": "^16.13.1",
-    "react-scripts": "3.4.1",
-    "typescript": "~3.7.2"
-  },
+  "description": "How to organize a React app",
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject",
-    "css:dev": "postcss src/styles/index.css -o src/styles/output.css",
-    "css:watch": "postcss src/styles/index.css -o src/styles/output.css -w",
-    "css:prod": "postcss src/styles/index.css -o src/styles/output.css --env production"
+    "setup": "npm run api:setup && npm run client:setup",
+    "start": "concurrently \"npm:api:start\" \"npm:client:start\"",
+    "api:setup": "cd api && npm run build",
+    "api:start": "cd api && npm run start",
+    "client:setup": "cd client && npm run css:dev",
+    "client:start": "cd client && npm run start",
+    "format": "prettier --write **/*.{ts,tsx}"
   },
-  "eslintConfig": {
-    "extends": "react-app"
-  },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
-  },
+  "keywords": [],
+  "license": "MIT",
   "devDependencies": {
-    "@testing-library/jest-dom": "^4.2.4",
-    "@testing-library/react": "^9.3.2",
-    "@testing-library/user-event": "^7.1.2",
-    "@types/jest": "^24.0.0",
-    "@types/node": "^12.0.0",
-    "@types/react": "^16.9.0",
-    "@types/react-dom": "^16.9.0",
-    "@fullhuman/postcss-purgecss": "^2.2.0",
-    "autoprefixer": "^9.8.0",
-    "cssnano": "^4.1.10",
-    "postcss-cli": "^7.1.1",
-    "postcss-import": "^12.0.1",
-    "tailwindcss": "^1.4.6"
+    "concurrently": "^5.2.0",
+    "husky": "^4.2.5",
+    "lint-staged": "^10.2.6",
+    "prettier": "^2.0.5"
   }
 }
