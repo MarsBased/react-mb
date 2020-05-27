@@ -6,7 +6,7 @@ It contains a [react app](/client/src) and a [react style guide](/docs/REACT_STY
 
 ## What to expect
 
-I'll be doing live coding, basically adding state and logic to an empty app:
+I'll be doing live coding, basically adding state and logic to this app.
 
 - Overview of a react application
 - Different types of state: state, props, and effects
@@ -16,6 +16,10 @@ I'll be doing live coding, basically adding state and logic to an empty app:
 - Global state with hooks (authorization)
 - Questions
 - Lunch!!
+
+## How to use it
+
+You can use this repository as a code kata: write the hooks to make it work. This is what I'm going to try on friday.
 
 ## What I want for the future
 
