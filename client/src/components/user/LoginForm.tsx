@@ -20,6 +20,9 @@ const LoginForm: React.FC<Props> = ({ onLogin }) => {
     <form
       data-testid="LoginForm"
       className="flex flex-col max-w-sm mx-auto bg-card rounded p-4"
+      onSubmit={(e) => {
+        e.preventDefault();
+      }}
     >
       <h1 className="font-medium text-2xl mb-4">{f({ id: "LOGIN_TITLE" })}</h1>
       <div className="py-2 flex flex-col">

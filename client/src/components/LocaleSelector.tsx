@@ -1,6 +1,6 @@
 import React from "react";
 
-const LOCALES = ["ca", "en"];
+const LOCALES = ["ca", "es", "en"];
 
 const LocaleSelector: React.FC = () => {
   const locale = "en";
