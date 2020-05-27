@@ -2,7 +2,11 @@
 
 This is the repository for the Martian Day presentation.
 
-## Presentation contents
+It contains a [react app](/client) and a [react style guide](/docs/REACT_STYLE_GUIDE.md)
+
+## What to expect
+
+I'll be doing live coding. This is a possible TOC of the presentation:
 
 - Overview of a react application
 - Different types of state: state, props, and effects
@@ -11,20 +15,21 @@ This is the repository for the Martian Day presentation.
 - API with effects
 - Global state with hooks (authorization)
 - Questions
+- Lunch!!
 
 ## What I want for the future
 
-I'd like to have a [Marsbased React style guide](/docs/REACT_STYLE_GUIDE.md) and a reference implementation: [client/](/client)
+I'd like to have a [Marsbased React style guide](/docs/REACT_STYLE_GUIDE.md) with a [reference implementation](/client)
 
 The React style guide is based on what David, Genís and I did in the last Zerg Rush.
 
 My proposal is to start with the content of this repository as a base, and open PRs to make changes, additions, etc.
 
-We can have several reference implementations in different branches. One more standard in `master`, and possible variations (`akita`: state with Akita)
+We can have several reference implementations in different branches. One more standard in `master`, and possible variations (`feat/akita`: state with Akita)
 
 ## Contributing
 
-Node required.
+Node required (version, the same as [create-react-app](https://create-react-app.dev/docs/getting-started/))
 
 Clone this repo and run setup the project:
 

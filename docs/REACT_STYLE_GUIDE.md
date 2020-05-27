@@ -38,9 +38,13 @@
 
 ## 1. <a name='Generalguidelines'></a>General guidelines
 
-- Use typescript (always!)
-- Use always functional components
+- Use typescript
+- Write functional components
 - Use hooks for state management
+- Use a declarative API library (react-query, apollo-client)
+
+#### Naming conventions
+
 - useCamelCase for normal typescript files (.ts)
 - UsePascalCase for typescript with JSX (.tsx)
 - Consider one repo for both api and client
@@ -73,7 +77,7 @@ src/
 |- routes.ts            # Application route definitions
 |- App.tsx              # Application setup (providers)
 |- Router.tsx           # Application router
-|- pages/
+|- pages/               # page components (access to router)
   |- HomePage.tsx
   |- UserListPage.tsx
   |- UserDetailPage.tsx
@@ -112,6 +116,7 @@ If using a repo for both api and client, put the above inside `client/` folder
 
 #### 2.2. <a name='Referencesprojectstructure'></a>References (project structure)
 
+- Create react app folder structure: https://create-react-app.dev/docs/folder-structure
 - Route definitions idea taken from [Redwood](https://github.com/redwoodjs/redwood) framework
 
 ## 3. <a name='Libraries'></a>Libraries
@@ -157,21 +162,22 @@ If using a repo for both api and client, put the above inside `client/` folder
 #### 5.1. <a name='GraphQL'></a>GraphQL
 
 - Use Apollo: [apollo-client](https://www.apollographql.com/docs/react/)
-- Export queries and mutations inside
+- Export queries and mutations inside `src/graphql/index.ts`
 - Export the client at `src/graphql/client.ts`
 
 #### 5.2. <a name='REST'></a>REST
 
-- Do not use axios. Recommended alternative: [xy](https://github.com/sindresorhus/ky)
 - A single `src/api/index.ts` exports all possible API interactions
 - Use `src/api/types.d.ts` to declare API entity type definitions
 - Use mapping functions inside `src/api/map.ts` to ensure responses conform to the type definitions. Those mapping functions could be used also to transform data, if needed
-- Client specific issues (like authorization) are inside `src/api/client.ts`. If more than one service is used, there could be more than one client: `src/api/service1-client.ts`, `src/api/service2-client.ts`, ...
+- Do not use axios. Recommended alternative: [xy](https://github.com/sindresorhus/ky)
+- Client specific functionality inside `src/api/client.ts`
+- If Auth and API are different services, is common to have two folders (`src/auth` and `src/api`) and the API depends on authorization (JWT tokens, for example). If auth and API are in the same service, the `src/auth` folder can be omitted.
 
 ## 6. <a name='Routing'></a>Routing
 
 - Use react-router-dom
-- Use react-router-dom hooks interface: `useRouteMatch`
+- Page components can access the router. Use react-router-dom hooks interface: `useRouteMatch`
 - Create a route definitions file `src/routes.ts` with all route paths
 
 #### 6.1. <a name='Pagevscomponent'></a>Page vs component
