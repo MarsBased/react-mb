@@ -1,12 +1,11 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import routes from "../routes";
-import useTheme from "../hooks/useTheme";
 import LocaleSelector from "./LocaleSelector";
 
 const NavBar: React.FC = () => {
   const user = { loggedIn: true, admin: true, name: "Username" };
-  const { theme, toggleTheme } = useTheme();
+  const theme = "ligth";
   return (
     <nav className="text-muted-light flex items-center w-full bg-header border-b py-2">
       <div className="mx-4 flex items-center flex-grow">
@@ -28,7 +27,7 @@ const NavBar: React.FC = () => {
         About
       </Link>
       <LocaleSelector />
-      <button onClick={toggleTheme}>{theme}</button>
+      <button>{theme}</button>
       <div className="mr-8">
         <Link className="ml-4" to={routes.account()}>
           {user.name}

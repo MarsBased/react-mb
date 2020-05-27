@@ -2,11 +2,11 @@
 
 This is the repository for the Martian Day presentation.
 
-It contains a [react app](/client) and a [react style guide](/docs/REACT_STYLE_GUIDE.md)
+It contains a [react app](/client/src) and a [react style guide](/docs/REACT_STYLE_GUIDE.md)
 
 ## What to expect
 
-I'll be doing live coding. This is a possible TOC of the presentation:
+I'll be doing live coding, basically adding state and logic to an empty app:
 
 - Overview of a react application
 - Different types of state: state, props, and effects
@@ -19,7 +19,7 @@ I'll be doing live coding. This is a possible TOC of the presentation:
 
 ## What I want for the future
 
-I'd like to have a [Marsbased React style guide](/docs/REACT_STYLE_GUIDE.md) with a [reference implementation](/client)
+I'd like to have a [Marsbased React style guide](/docs/REACT_STYLE_GUIDE.md) with a [reference implementation](/client/src)
 
 The React style guide is based on what David, Genís and I did in the last Zerg Rush.
 

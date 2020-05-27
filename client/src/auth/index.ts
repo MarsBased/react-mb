@@ -20,6 +20,7 @@ type PostLogin = {
 
 const API = {
   login: ({ email, password }: PostLogin) => client.login(email, password),
+  logout: () => Promise.resolve({}),
 };
 
 export default API;

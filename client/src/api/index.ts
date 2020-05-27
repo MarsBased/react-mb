@@ -24,9 +24,6 @@ type GetUser = {
 };
 
 const API = {
-  login: {
-    post: ({ email, password }: PostLogin) => client.login(email, password),
-  },
   albums: {
     list: () => client.get(`/albums`).then(map(toAlbumItem)),
     get: ({ id }: GetAlbum) => client.get("/albums/" + id).then(toAlbum),
