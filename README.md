@@ -4,6 +4,8 @@ This is the repository for the Martian Day presentation.
 
 It contains a [react app](/client/src) and a [react style guide](/docs/REACT_STYLE_GUIDE.md)
 
+See it in action: https://danigb.github.io/react-mb
+
 ## What to expect
 
 I'll be doing live coding, basically adding state and logic to this app.

@@ -1,6 +1,15 @@
 import ky from "ky";
 import config from "../config";
-import { getAuthHeaders } from "../auth";
+
+let token: string = "";
+
+export function setAuthToken(newToken: string) {
+  token = newToken;
+}
+
+export function getAuthHeaders() {
+  return token ? { "x-access-token": token } : {};
+}
 
 const URL = config.apiUrl;
 

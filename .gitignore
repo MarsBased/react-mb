@@ -12,7 +12,7 @@ node_modules
 db.json
 
 # production
-/build
+build/
 
 # misc
 /tmp

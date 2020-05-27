@@ -1,5 +1,8 @@
+const delay = (ms: number) =>
+  new Promise((resolve) => setTimeout(() => resolve(), ms));
+
 export async function login(email: string, password: string) {
-  await new Promise((resolve) => setTimeout(() => resolve(), 250));
+  await delay(250);
 
   return Promise.resolve({
     name: "Grace Hopper",
@@ -7,4 +10,9 @@ export async function login(email: string, password: string) {
     token: "JWT_TOKEN",
     admin: true,
   });
+}
+
+export async function logout() {
+  await delay(250);
+  return Promise.resolve({});
 }

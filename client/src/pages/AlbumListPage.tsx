@@ -13,29 +13,16 @@ const AlbumListPage: React.FC = () => {
   return (
     <Layout breadcrumbs={[{ label: "home", to: routes.root() }]}>
       <h1 className="text-4xl mb-4">Albums</h1>
-      <table className="w-full">
-        <thead>
-          <tr>
-            <th className="text-left py-2 border-b border-muted">Name</th>
-          </tr>
-        </thead>
-        <tbody>
-          {status === "loading" && <Spinner />}
-          {albums &&
-            albums.map((album) => (
-              <tr key={album.id}>
-                <td className="py-2 border-b">
-                  <Link
-                    to={routes.album(album.id)}
-                    className="text-green-800 hover:underline"
-                  >
-                    {album.title}
-                  </Link>
-                </td>
-              </tr>
-            ))}
-        </tbody>
-      </table>
+      {status === "loading" && <Spinner />}
+      {albums &&
+        albums.map((album) => (
+          <Link key={album.id} to={routes.album(album.id)}>
+            <div className="flex flex-col p-4 my-4 bg-card rounded shadow-sm">
+              <h2 className="text-accent text-2xl capitalize">{album.title}</h2>
+              <p className="my-4">{album.body}</p>
+            </div>
+          </Link>
+        ))}
     </Layout>
   );
 };
@@ -47,6 +34,16 @@ export default AlbumListPage;
 // );
 
 const FAKE_ALBUMS = [
-  { id: "1", title: "et libero quasi" },
-  { id: "2", title: "in eos occaecati recusandae quia velit aut consectetur" },
+  {
+    id: "1",
+    title: "et libero quasi",
+    body:
+      "tenetur ut quis\naspernatur ad vero itaque sit architecto excepturi omnis\nomnis repellendus maiores\nvel dolores unde omnis",
+  },
+  {
+    id: "2",
+    title: "in eos occaecati recusandae quia velit aut consectetur",
+    body:
+      "in est ea mollitia dolores consequatur\nqui est fugit magnam saepe ab praesentium omnis et\na atque eos voluptatem et et natus perspiciatis\nlaborum corporis blanditiis rerum adipisci voluptatem",
+  },
 ];
