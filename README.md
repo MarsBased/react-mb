@@ -34,6 +34,7 @@ Node required (version, the same as [create-react-app](https://create-react-app.
 Clone this repo and run setup the project:
 
 ```bash
+npm install
 npm run setup
 ```
 
