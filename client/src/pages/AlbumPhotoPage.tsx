@@ -1,8 +1,6 @@
 import React from "react";
 import Layout from "../components/Layout";
 import { useRouteMatch } from "react-router-dom";
-import { useQuery } from "react-query";
-import api from "../api";
 import routes from "../routes";
 import Spinner from "../components/Spinner";
 

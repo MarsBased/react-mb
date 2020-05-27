@@ -1,9 +1,7 @@
 import React from "react";
 import Layout from "../../components/Layout";
-import { useQuery } from "react-query";
 import { useRouteMatch } from "react-router-dom";
 import routes from "../../routes";
-import api from "../../api";
 import LoadingPage from "../LoadingPage";
 
 type RouteParams = {

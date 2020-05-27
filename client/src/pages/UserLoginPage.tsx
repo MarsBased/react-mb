@@ -1,6 +1,4 @@
 import React from "react";
-import { Redirect } from "react-router-dom";
-import routes from "../routes";
 import Layout from "../components/Layout";
 import LoginForm from "../components/user/LoginForm";
 
