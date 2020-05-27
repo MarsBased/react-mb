@@ -38,11 +38,16 @@ Node required (version, the same as [create-react-app](https://create-react-app.
 Clone this repo and run setup the project:
 
 ```bash
-npm install
 npm run setup
 ```
 
-To start (api and client): `npm run start`
+To start (api and client):
+
+```bash
+npm run start
+```
+
+Or alternatively: `cd api && npm start` and `cd client && npm start`
 
 Make a PR.
 

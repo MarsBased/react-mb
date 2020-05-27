@@ -6,9 +6,9 @@
   "scripts": {
     "setup": "npm run api:setup && npm run client:setup",
     "start": "concurrently \"npm:api:start\" \"npm:client:start\"",
-    "api:setup": "cd api && npm run build",
+    "api:setup": "cd api && npm install && npm run build",
     "api:start": "cd api && npm run start",
-    "client:setup": "cd client && npm run css:dev",
+    "client:setup": "cd client && npm install && npm run css:dev",
     "client:start": "cd client && npm run start",
     "format": "prettier --write **/*.{ts,tsx}"
   },
