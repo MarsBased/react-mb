@@ -29,9 +29,10 @@ export type User = {
   };
 };
 
-export type AlbumItem = {
+export type AlbumListItem = {
   id: string;
   title: string;
+  description: string;
 };
 
 export type Album = {

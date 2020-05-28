@@ -3,6 +3,7 @@ import Layout from "../components/Layout";
 import { useRouteMatch } from "react-router-dom";
 import routes from "../routes";
 import Spinner from "../components/Spinner";
+import { Album, Photo } from "../api/types";
 
 type RouteParams = {
   albumId: string;
@@ -13,8 +14,8 @@ const AlbumPhotoPage: React.FC = () => {
   console.log("RENDER", AlbumPhotoPage.name);
 
   const { params } = useRouteMatch<RouteParams>();
-  const album = FAKE_ALBUM;
-  const photo = params.photoId === "2" ? FAKE_PHOTOS[1] : FAKE_PHOTOS[0];
+  const album: Album = FAKE_ALBUM;
+  const photo: Photo = params.photoId === "2" ? FAKE_PHOTOS[1] : FAKE_PHOTOS[0];
   const photoStatus: string = "";
 
   return (
@@ -55,7 +56,7 @@ const FAKE_ALBUM = {
   id: "1",
   title: "et libero quasi",
   description: "",
-  photosCount: "",
+  photosCount: 2,
 };
 
 const FAKE_PHOTOS = [

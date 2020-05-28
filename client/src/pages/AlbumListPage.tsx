@@ -3,10 +3,11 @@ import Layout from "../components/Layout";
 import Spinner from "../components/Spinner";
 import { Link } from "react-router-dom";
 import routes from "../routes";
+import { AlbumListItem } from "../api/types";
 
 const AlbumListPage: React.FC = () => {
-  const albums = FAKE_ALBUMS;
-  const status: string = "";
+  const albums: AlbumListItem[] = FAKE_ALBUMS;
+  const status: string = "success";
 
   console.log("RENDER", AlbumListPage.name);
 
@@ -19,7 +20,7 @@ const AlbumListPage: React.FC = () => {
           <Link key={album.id} to={routes.album(album.id)}>
             <div className="flex flex-col p-4 my-4 bg-card rounded shadow-sm">
               <h2 className="text-accent text-2xl capitalize">{album.title}</h2>
-              <p className="my-4">{album.body}</p>
+              <p className="my-4">{album.description}</p>
             </div>
           </Link>
         ))}
@@ -37,13 +38,13 @@ const FAKE_ALBUMS = [
   {
     id: "1",
     title: "et libero quasi",
-    body:
+    description:
       "tenetur ut quis\naspernatur ad vero itaque sit architecto excepturi omnis\nomnis repellendus maiores\nvel dolores unde omnis",
   },
   {
     id: "2",
     title: "in eos occaecati recusandae quia velit aut consectetur",
-    body:
+    description:
       "in est ea mollitia dolores consequatur\nqui est fugit magnam saepe ab praesentium omnis et\na atque eos voluptatem et et natus perspiciatis\nlaborum corporis blanditiis rerum adipisci voluptatem",
   },
 ];

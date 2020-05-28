@@ -4,7 +4,9 @@ import routes from "../routes";
 import LocaleSelector from "./LocaleSelector";
 import ThemeSelector from "./ThemeSelector";
 
-const NavBar: React.FC = () => {
+type Props = {};
+
+const NavBar: React.FC<Props> = () => {
   const user = { loggedIn: true, admin: true, name: "Username" };
   return (
     <nav className="text-muted-light flex items-center w-full bg-header border-b py-2">

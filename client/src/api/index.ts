@@ -1,6 +1,6 @@
 import {
   map,
-  toAlbumItem,
+  toAlbumListItem,
   toAlbum,
   toPhoto,
   toUserListItem,
@@ -25,7 +25,7 @@ type GetUser = {
 
 const API = {
   albums: {
-    list: () => client.get(`/albums`).then(map(toAlbumItem)),
+    list: () => client.get(`/albums`).then(map(toAlbumListItem)),
     get: ({ id }: GetAlbum) => client.get("/albums/" + id).then(toAlbum),
     photos: {
       list: ({ albumId }: GetAlbumPhotosList) =>

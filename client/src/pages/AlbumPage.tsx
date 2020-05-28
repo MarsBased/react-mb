@@ -4,6 +4,7 @@ import { useRouteMatch, Link } from "react-router-dom";
 import Card from "../components/Card";
 import routes from "../routes";
 import LoadingPage from "./LoadingPage";
+import { Album, Photo } from "../api/types";
 
 type RouteParams = {
   id: string;
@@ -11,9 +12,9 @@ type RouteParams = {
 
 const AlbumPage: React.FC = () => {
   const { params } = useRouteMatch<RouteParams>();
-  const album = FAKE_ALBUM;
+  const album: Album = FAKE_ALBUM;
   const albumStatus: string = "";
-  const photos = FAKE_PHOTOS;
+  const photos: Photo[] = FAKE_PHOTOS;
   const photosStatus: string = "";
 
   console.log("RENDER", AlbumPage.name, params);
@@ -63,7 +64,7 @@ const FAKE_ALBUM = {
   id: "1",
   title: "et libero quasi",
   description: "",
-  photosCount: "",
+  photosCount: 0,
 };
 
 const FAKE_PHOTOS = [

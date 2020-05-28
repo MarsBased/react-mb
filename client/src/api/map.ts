@@ -1,10 +1,11 @@
-import { AlbumItem, Album, Photo, UserListItem, User } from "./types";
+import { AlbumListItem, Album, Photo, UserListItem, User } from "./types";
 
 export const map = <T>(fn: (x: any) => T) => (xs: any) => (xs as any[]).map(fn);
 
-export const toAlbumItem = (album: any): AlbumItem => ({
+export const toAlbumListItem = (album: any): AlbumListItem => ({
   id: album.id || "",
   title: album.title || "",
+  description: album.description || "",
 });
 
 export const toAlbum = (album: any): Album => ({
