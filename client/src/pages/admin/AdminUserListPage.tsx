@@ -4,12 +4,12 @@ import Spinner from "../../components/Spinner";
 import { Link } from "react-router-dom";
 import routes from "../../routes";
 import { useIntl } from "react-intl";
+import useQuery from "../../hooks/useQuery";
+import API from "../../api";
 
 const AdminUserListPage: React.FC = () => {
   const { formatMessage: f } = useIntl();
-
-  const users = FAKE_DATA;
-  const status: string = "loaded";
+  const { data: users, status } = useQuery(() => API.users.list());
 
   console.log("RENDER", AdminUserListPage.name);
 
@@ -59,20 +59,3 @@ const AdminUserListPage: React.FC = () => {
 };
 
 export default AdminUserListPage;
-
-// const { data: users, status } = useQuery(["users"], () => api.users.list());
-
-const FAKE_DATA = [
-  {
-    id: "1",
-    name: "Aurelie Erdman",
-    email: "Ollie.Satterfield@addie.biz",
-    avatarUrl: { thumb: "http://placehold.it/40/aaaaaa" },
-  },
-  {
-    id: "2",
-    name: "Elmo Weissnat",
-    email: "Blair@roxane.me",
-    avatarUrl: { thumb: "http://placehold.it/40/aaaaaa" },
-  },
-];

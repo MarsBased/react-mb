@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { useIntl } from "react-intl";
 import routes from "../../routes";
+import useInput from "../../hooks/useInput";
 
 export type LoginData = {
   email: string;
@@ -11,10 +12,13 @@ export type LoginData = {
 type Props = {
   onLogin: (data: LoginData) => void;
 };
+
+const isRequired = (error: string) => (value: string) => (value ? "" : error);
+
 const LoginForm: React.FC<Props> = ({ onLogin }) => {
   const { formatMessage: f } = useIntl();
-  const email = { error: "" };
-  const password = { error: "" };
+  const email = useInput(isRequired("Email is required"));
+  const password = useInput(isRequired("Password is required"));
 
   return (
     <form
@@ -22,6 +26,12 @@ const LoginForm: React.FC<Props> = ({ onLogin }) => {
       className="flex flex-col max-w-sm mx-auto bg-card rounded p-4"
       onSubmit={(e) => {
         e.preventDefault();
+        const valid = [email.isValid(), password.isValid()].every(
+          (isValid) => isValid
+        );
+        if (valid) {
+          onLogin({ email: email.value, password: password.value });
+        }
       }}
     >
       <h1 className="font-medium text-2xl mb-4">{f({ id: "LOGIN_TITLE" })}</h1>
@@ -30,6 +40,8 @@ const LoginForm: React.FC<Props> = ({ onLogin }) => {
         <input
           name="email"
           type="text"
+          value={email.value}
+          onChange={email.handleChange}
           className="p-2 border border-muted-light bg-page"
           placeholder="email@example.com"
         />
@@ -40,6 +52,8 @@ const LoginForm: React.FC<Props> = ({ onLogin }) => {
         <input
           name="password"
           type="password"
+          value={password.value}
+          onChange={password.handleChange}
           className="p-2 border border-muted-light my-1 bg-page"
           placeholder="Password here"
         />
