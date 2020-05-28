@@ -3,7 +3,6 @@ import Layout from "../../components/Layout";
 import { useRouteMatch } from "react-router-dom";
 import routes from "../../routes";
 import LoadingPage from "../LoadingPage";
-import { User } from "../../api/types";
 
 type RouteParams = {
   id: string;
