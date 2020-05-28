@@ -3,11 +3,15 @@ import Layout from "../components/Layout";
 import LoginForm from "../components/user/LoginForm";
 
 const UserLoginPage: React.FC = () => {
-  // if (user.loggedIn) return <Redirect to={routes.root()} />;
+  const { user } = {
+    user: undefined,
+  };
+
+  if (user) return null;
 
   return (
     <Layout>
-      <LoginForm onLogin={(data) => console.log("LOGIN", data)} />
+      <LoginForm onLogin={(credentials) => console.log("LOGIN", credentials)} />
     </Layout>
   );
 };

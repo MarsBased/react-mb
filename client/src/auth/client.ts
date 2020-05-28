@@ -3,12 +3,11 @@ const delay = (ms: number) =>
 
 export async function login(email: string, password: string) {
   await delay(250);
-
   return Promise.resolve({
-    name: "Grace Hopper",
+    name: email.split("@")[0],
     id: "1",
     token: "JWT_TOKEN",
-    admin: true,
+    admin: email.indexOf("admin") !== -1,
   });
 }
 

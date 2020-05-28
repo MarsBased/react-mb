@@ -5,9 +5,9 @@ type PostLogin = {
   password: string;
 };
 
-const API = {
+const AUTH = {
   login: ({ email, password }: PostLogin) => client.login(email, password),
   logout: () => client.logout(),
 };
 
-export default API;
+export default AUTH;

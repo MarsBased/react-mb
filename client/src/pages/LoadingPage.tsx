@@ -4,6 +4,7 @@ import Spinner from "../components/Spinner";
 
 const LoadingPage: React.FC = () => {
   console.log("RENDER", LoadingPage.name);
+
   return (
     <Layout>
       <Spinner />

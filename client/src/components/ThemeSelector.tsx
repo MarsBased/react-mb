@@ -1,14 +1,15 @@
 import React from "react";
 import { ThemeIcon } from "./Icons";
 
-type Theme = "light" | "dark";
-
 type Props = {
   className?: string;
 };
 
 const ThemeSelector: React.FC<Props> = ({ className = "" }) => {
-  const theme: Theme = "light";
+  const theme = "light";
+
+  console.log("RENDER", ThemeSelector.name);
+
   return (
     <button
       className={`${className} flex items-center px-4 rounded-full capitalize`}

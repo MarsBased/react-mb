@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import routes from "../../routes";
 import { useIntl } from "react-intl";
+import routes from "../../routes";
 
 export type LoginData = {
   email: string;
@@ -33,9 +33,7 @@ const LoginForm: React.FC<Props> = ({ onLogin }) => {
           className="p-2 border border-muted-light bg-page"
           placeholder="email@example.com"
         />
-        {email.error && (
-          <div className="text-error mt-1">Must enter a valid email</div>
-        )}
+        {email.error && <div className="text-error mt-1">{email.error}</div>}
       </div>
       <div className="py-2 flex flex-col">
         <label htmlFor="password">Password</label>
@@ -46,9 +44,7 @@ const LoginForm: React.FC<Props> = ({ onLogin }) => {
           placeholder="Password here"
         />
         {password.error && (
-          <div className="text-error mt-1">
-            Password must have at least 4 characters
-          </div>
+          <div className="text-error mt-1">{password.error}</div>
         )}
       </div>
       <div className="mt-4 flex items-center">
