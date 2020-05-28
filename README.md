@@ -8,14 +8,14 @@ See it in action: https://danigb.github.io/react-mb
 
 ## What to expect
 
-I'll be doing live coding, basically adding state and logic to this app.
+The talk is going to be about React Hooks. Basically I'll be doing live coding, to "bring life" (aka: add state and business logic) the example react application:
 
 - Overview of a react application
 - Different types of state: state, props, and effects
 - Local state with hooks
 - Effects with hooks
 - API with effects
-- Global state with hooks (authorization)
+- Global state with hooks
 - Questions
 - Lunch!!
 
