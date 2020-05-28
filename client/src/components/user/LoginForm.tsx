@@ -26,10 +26,8 @@ const LoginForm: React.FC<Props> = ({ onLogin }) => {
       className="flex flex-col max-w-sm mx-auto bg-card rounded p-4"
       onSubmit={(e) => {
         e.preventDefault();
-        const valid = [email.isValid(), password.isValid()].every(
-          (isValid) => isValid
-        );
-        if (valid) {
+        const allValid = [email.isValid(), password.isValid()].every((x) => x);
+        if (allValid) {
           onLogin({ email: email.value, password: password.value });
         }
       }}
