@@ -4,7 +4,7 @@
   "description": "",
   "scripts": {
     "build": "node scripts/seed-data.js",
-    "start": "json-server db.json -p 3001"
+    "start": "json-server db.json -p 1338 --delay 500"
   },
   "keywords": [],
   "license": "MIT",

@@ -11,7 +11,7 @@ const env: Environment =
 const CONFIG: Record<Environment, Config> = {
   development: {
     env,
-    apiUrl: "http://localhost:3001",
+    apiUrl: "http://localhost:1338",
   },
   production: {
     env,
