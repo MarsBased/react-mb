@@ -3,6 +3,8 @@ import Layout from "../../components/Layout";
 import { useRouteMatch } from "react-router-dom";
 import routes from "../../routes";
 import LoadingPage from "../LoadingPage";
+import useQuery from "../../hooks/useQuery";
+import API from "../../api";
 
 type RouteParams = {
   id: string;
@@ -10,8 +12,9 @@ type RouteParams = {
 
 const AdminUserDetailPage: React.FC = () => {
   const { params } = useRouteMatch<RouteParams>();
-  const user = FAKE_DATA;
-  const status: string = "";
+  const { data: user, status } = useQuery(() =>
+    API.users.get({ id: params.id })
+  );
 
   console.log("RENDER", AdminUserDetailPage.name, params);
 
@@ -32,9 +35,3 @@ const AdminUserDetailPage: React.FC = () => {
 };
 
 export default AdminUserDetailPage;
-
-const FAKE_DATA = {
-  id: "1",
-  name: "Grace Hopper",
-  email: "grace.hopper@nasa.gov",
-};

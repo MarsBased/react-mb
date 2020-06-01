@@ -4,6 +4,8 @@ import { useRouteMatch } from "react-router-dom";
 import routes from "../routes";
 import Spinner from "../components/Spinner";
 import { Album, Photo } from "../api/types";
+import useQuery from "../hooks/useQuery";
+import API from "../api";
 
 type RouteParams = {
   albumId: string;
@@ -14,9 +16,12 @@ const AlbumPhotoPage: React.FC = () => {
   console.log("RENDER", AlbumPhotoPage.name);
 
   const { params } = useRouteMatch<RouteParams>();
-  const album: Album = FAKE_ALBUM;
-  const photo: Photo = params.photoId === "2" ? FAKE_PHOTOS[1] : FAKE_PHOTOS[0];
-  const photoStatus: string = "";
+  const { data: album } = useQuery(() =>
+    API.albums.get({ id: params.albumId })
+  );
+  const { data: photo, status: photoStatus } = useQuery(() =>
+    API.albums.photos.get({ id: params.photoId, albumId: params.albumId })
+  );
 
   return (
     <Layout
@@ -42,36 +47,3 @@ const AlbumPhotoPage: React.FC = () => {
 };
 
 export default AlbumPhotoPage;
-
-// const { data: album } = useQuery(
-//   ["album", { id: params.albumId }],
-//   (_, params) => api.albums.get(params)
-// );
-// const { data: photo, status: photoStatus } = useQuery(
-//   ["album", { albumId: params.albumId, id: params.photoId }],
-//   (_, params) => api.albums.photos.get(params)
-// );
-
-const FAKE_ALBUM = {
-  id: "1",
-  title: "et libero quasi",
-  description: "",
-  photosCount: 2,
-};
-
-const FAKE_PHOTOS = [
-  {
-    id: "1",
-    albumId: "1",
-    title: "quirem",
-    url: "http://placehold.it/600/a15aae",
-    thumbnailUrl: "http://placehold.it/150/a15aae",
-  },
-  {
-    id: "2",
-    albumId: "1",
-    title: "repud",
-    url: "http://placehold.it/600/993671",
-    thumbnailUrl: "http://placehold.it/150/993671",
-  },
-];

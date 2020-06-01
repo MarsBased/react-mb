@@ -3,15 +3,15 @@ import { Link } from "react-router-dom";
 import routes from "../routes";
 import LocaleSelector from "./LocaleSelector";
 import ThemeSelector from "./ThemeSelector";
+import useUser from "../hooks/useUser";
 import { useIntl } from "react-intl";
 
 type Props = {};
 
 const NavBar: React.FC<Props> = () => {
   const { formatMessage: f } = useIntl();
-  const user = { admin: true, name: "user" };
-  const loggedIn = true;
-  const notLoggedIn = true;
+  const { user } = useUser();
+  const notLoggedIn = !user;
   const isAdmin = user && user.admin;
 
   return (
@@ -20,7 +20,7 @@ const NavBar: React.FC<Props> = () => {
         <Link to="/">
           <h1 className="text-xl">{f({ id: "APP_NAME" })}</h1>
         </Link>
-        {loggedIn && (
+        {user && (
           <>
             <Link className="ml-4" to={routes.albums()}>
               Albums
@@ -44,7 +44,7 @@ const NavBar: React.FC<Props> = () => {
       )}
       <LocaleSelector />
       <ThemeSelector className="bg-header hover:bg-page hover:text-default" />
-      {loggedIn && (
+      {user && (
         <div className="mr-8">
           <Link className="ml-4" to={routes.account()}>
             {user.name}
