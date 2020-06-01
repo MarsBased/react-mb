@@ -31,7 +31,7 @@ export const LocaleProvider: React.FC = ({ children }) => {
 
   return (
     <LocaleContext.Provider value={{ locale, setLocale, availableLocales }}>
-      <IntlProvider locale="en" messages={AvailableLocalesMap[locale]}>
+      <IntlProvider locale={locale} messages={AvailableLocalesMap[locale]}>
         {children}
       </IntlProvider>
     </LocaleContext.Provider>
