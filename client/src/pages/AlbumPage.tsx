@@ -5,6 +5,8 @@ import Card from "../components/Card";
 import routes from "../routes";
 import LoadingPage from "./LoadingPage";
 import { Album, Photo } from "../api/types";
+import useQuery from "../hooks/useQuery";
+import API from "../api";
 
 type RouteParams = {
   id: string;
@@ -12,10 +14,17 @@ type RouteParams = {
 
 const AlbumPage: React.FC = () => {
   const { params } = useRouteMatch<RouteParams>();
-  const album: Album = FAKE_ALBUM;
-  const albumStatus: string = "";
-  const photos: Photo[] = FAKE_PHOTOS;
-  const photosStatus: string = "";
+  const { data: album, status: albumStatus } = useQuery(() =>
+    API.albums.get({ id: params.id })
+  );
+  const { data: photos, status: photosStatus } = useQuery(() =>
+    API.albums.photos.list({ albumId: params.id })
+  );
+
+  // const album: Album = FAKE_ALBUM;
+  // const albumStatus: string = "";
+  // const photos: Photo[] = FAKE_PHOTOS;
+  // const photosStatus: string = "";
 
   console.log("RENDER", AlbumPage.name, params);
 
