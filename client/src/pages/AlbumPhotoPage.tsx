@@ -1,9 +1,10 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Layout from "../components/Layout";
 import { useRouteMatch } from "react-router-dom";
 import routes from "../routes";
 import Spinner from "../components/Spinner";
-import { Album, Photo } from "../api/types";
+import useQuery from "../hooks/useQuery";
+import API from "../api";
 
 type RouteParams = {
   albumId: string;
@@ -14,9 +15,22 @@ const AlbumPhotoPage: React.FC = () => {
   console.log("RENDER", AlbumPhotoPage.name);
 
   const { params } = useRouteMatch<RouteParams>();
-  const album: Album = FAKE_ALBUM;
-  const photo: Photo = params.photoId === "2" ? FAKE_PHOTOS[1] : FAKE_PHOTOS[0];
-  const photoStatus: string = "";
+
+  const { data: album } = useQuery(() =>
+    API.albums.get({ id: params.albumId })
+  );
+  const { data: photo, status: photoStatus } = useQuery(() =>
+    API.albums.photos.get({ albumId: params.albumId, id: params.photoId })
+  );
+
+  useEffect(() => {
+    if (album && photo) {
+    }
+  }, [album, photo]);
+
+  // const album: Album = FAKE_ALBUM;
+  // const photo: Photo = params.photoId === "2" ? FAKE_PHOTOS[1] : FAKE_PHOTOS[0];
+  // const photoStatus: string = "";
 
   return (
     <Layout

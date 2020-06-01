@@ -1,13 +1,13 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Layout from "../components/Layout";
 import Spinner from "../components/Spinner";
 import { Link } from "react-router-dom";
 import routes from "../routes";
-import { AlbumListItem } from "../api/types";
+import API from "../api";
+import useQuery from "../hooks/useQuery";
 
 const AlbumListPage: React.FC = () => {
-  const albums: AlbumListItem[] = FAKE_ALBUMS;
-  const status: string = "success";
+  const { data: albums, status } = useQuery(() => API.albums.list());
 
   console.log("RENDER", AlbumListPage.name);
 
