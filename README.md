@@ -50,6 +50,7 @@ We can have several reference implementations in different branches. One more st
 
 - We use [create-react-app](https://create-react-app.dev/docs/getting-started) to bootstrap the application
 - Use typescript
+- We use ESLint with the React plugin for linting, with recommended rules and [Airbnb](https://github.com/airbnb/javascript/tree/master/react)'s for now, subject to change.
 - Write functional components (We write a JavaScript function which accepts props as an argument and returns a React element instead of extending from `React.Component`)
 - Use hooks for state management
 - Use a declarative API library (react-query, apollo-client)
