@@ -1,8 +1,8 @@
-# ~~MarsBased~~ Dani's React Style Guide
+# MarsBased React Style Guide
 
 ## What this repo is about
 
-This is the defacto MarsBased style guide for React applications. In the `/example` directory there is a working application with Hooks that follow the guidelines below.
+This is the default MarsBased style guide for React applications. In the `/example` directory there is a working application with Hooks that follow the guidelines below.
 
 ### Advanced guidelines
 
@@ -85,7 +85,35 @@ Should we choose the monorepo option, we use custom npm scripts to manage both p
 
 #### 1.1. <a name='Referencesgeneralguidelines'></a>References (general guidelines)
 
-- https://levelup.gitconnected.com/2-simple-effective-react-file-naming-convention-tips-cce1022328a8
+##### 1.1.2 Naming convention
+
+1. Match your component-related files with the component name
+
+```
+├── components
+│   ├── SomeComponent
+│   │   ├── SomeComponent.test.jsx
+│   │   ├── SomeComponent.jsx
+│   │   └── SomeComponent.styles.js
+```
+
+The above example keeps the component’s folder and the related files all with the same exact name, just different file extensions depending on what it is.
+
+2. Name non-component files based on what they are or do
+
+Files which are not component related are much easier to handle or work with if the name gives you some sort of indication on what it is. This will mostly impact your actions, reducers, providers, hooks, etc. The easiest way to grasp the value of naming your files in this way is illustrated by the examples below where one provides context to the person writing code and the other does not:
+
+```
+├── actions
+│   ├── anotherAction
+│   │   ├── anotherAction.test.ts
+│   │   └── anotherAction.ts
+│   └── someAction
+│       ├── someAction.test.ts
+│       └── someAction.ts
+```
+
+(Reference: https://levelup.gitconnected.com/2-simple-effective-react-file-naming-convention-tips-cce1022328a8)
 
 ## 2. <a name='Projectstructure'></a>Project structure
 
