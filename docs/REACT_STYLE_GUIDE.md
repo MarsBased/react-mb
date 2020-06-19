@@ -38,8 +38,9 @@
 
 ## 1. <a name='Generalguidelines'></a>General guidelines
 
+- We use [create-react-app](https://create-react-app.dev/docs/getting-started) to bootstrap the application
 - Use typescript
-- Write functional components
+- Write functional components (We write a JavaScript function which accepts props as an argument and returns a React element instead of extending from `React.Component`)
 - Use hooks for state management
 - Use a declarative API library (react-query, apollo-client)
 
@@ -47,7 +48,30 @@
 
 - useCamelCase for normal typescript files (.ts)
 - UsePascalCase for typescript with JSX (.tsx)
-- Consider one repo for both api and client
+
+#### Monorepo
+
+Consider one repo for both api and client
+
+```
+root/
+  |- api/
+  |- client/
+  package.json
+```
+
+Should we choose the monorepo option, we use custom npm scripts to manage both projects at the root level, defined at the root `package.json`:
+
+```json
+  "scripts": {
+    "setup": "npm run api:setup && npm run client:setup",
+    "start": "concurrently \"npm:api:start\" \"npm:client:start\"",
+    "api:setup": "cd api && npm install && npm run build",
+    "api:start": "cd api && npm run start",
+    "client:setup": "cd client && npm install && npm run css:dev",
+    "client:start": "cd client && npm run start"
+  }
+```
 
 #### 1.1. <a name='Referencesgeneralguidelines'></a>References (general guidelines)
 
@@ -63,7 +87,7 @@ See: https://create-react-app.dev/docs/folder-structure/
 - Declare all app routes at `src/routes.ts` (see below)
 - All page components under `pages/` (can be nested to mimic routes path hierarchy)
 - All non-page components under `components/` (can be nested)
-- All hooks under `hooks/` (can expose Providers)
+- All hooks under `hooks/` (can expose [Providers](https://reactjs.org/docs/hooks-reference.html#usecontext))
 - One folder for each (external) service. For example `api/` (for rest APIs), `graphql/` for GraphQL or `auth/` for authorization service. They can include type definitions, data transformations, clients or anything related to that service and communicating with it.
 - One folder for locales: `locales/`
 - The rest: utility functions, helpers, etc... under `lib/` (keep it clean, please)
@@ -129,7 +153,7 @@ If using a repo for both api and client, put the above inside `client/` folder
 - GraphQL API: [apollo-client](https://www.apollographql.com/docs/react/)
 - Routing: [react-router-dom](https://reacttraining.com/react-router/web/guides/quick-start)
 
-#### 3.2. <a name='Otherlibrariesweuse'></a>Other libraries we use
+#### 3.2. <a name='Otherlibrariesweuse'></a>Other libraries we use (if required by the project)
 
 - Styling
   - [tailwindcss](https://tailwindcss.com/)
